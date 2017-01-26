@@ -5,34 +5,54 @@
  */
 package serializable1;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Robb
  */
-public class Cuenta {
+public class Cuenta implements Serializable{
     
     private int cont = 0;
     private int nCuenta;
+    private String Propietario;
     private float Saldo;
     
     public Cuenta(){
 
     }
-    public Cuenta(float dinero){
+    public Cuenta(float dinero, String nombre){
 
-        nCuenta = cont;
+        nCuenta = setnCuenta();
+        Propietario = nombre;
         Saldo = dinero;
         cont++;
     }
 
+    public void setPropietario(String nombre){
+        
+        Propietario = nombre;
+    }
     public void setSaldo(float dinero){
 
         Saldo = dinero;
     }
-    public void setnCuenta(){
+    public int setnCuenta(){
 
-        nCuenta = cont;
-        cont++;
+        return cont;
+    }
+    
+    public String getPropietario(){
+        
+        return Propietario;
+    }
+    public int getnCuenta(){
+        
+        return nCuenta;
+    }
+    public float getSaldo(){
+        
+        return Saldo;
     }
     
     public void Ingreso(float dinero){
@@ -49,7 +69,7 @@ public class Cuenta {
     //Obvio el metodo "Transferencia" porque cuando quiera hacerlo simplemente 
     //preguntare de que cuenta a que cuenta se quiere transferir y llamare a un metodo Ingreso y a un metodo reintegro
     
-    public void consultaSaldo(){//Se considera el metodo getter para el Saldo
+    public void consultaSaldo(){
         
         System.out.println("El saldo actual de tu cuenta es: "+Saldo);
     }
